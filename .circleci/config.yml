@@ -18,11 +18,11 @@ jobs:
           name: Build docker container for each microservices
           command: |
             echo "--------- Installing dependencies-----------"
+            rm -rf node_modules package-lock.json
             curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
             sudo apt-get install -y nodejs
             node -v
             npm -v
-            npm install --save --legacy-peer-deps
 
             echo "BUILD ALL IMAGES"
             docker build -t udagram-api-feed ./udagram-api-feed
