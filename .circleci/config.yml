@@ -7,7 +7,7 @@ version: 2.1
 jobs:
   lint-app:
     docker:
-      - image: circleci/node:14
+      - image: circleci/node:12
     steps:
       - checkout
   build-docker:
@@ -20,11 +20,11 @@ jobs:
             echo "--------- Installing dependencies-----------"
             rm -rf node_modules package-lock.json
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-            nvm install 14.21.3
-            nvm use 14.21.3
+            nvm install 12.22.12
+            nvm use 12.22.12
             node -v
             npm -v
-            npm install -f
+            npm config set legacy-peer-deps true
 
             echo "BUILD ALL IMAGES"
             docker build -t udagram-api-feed ./udagram-api-feed
