@@ -31,7 +31,7 @@ jobs:
             docker tag udagram-api-user longtm4/udagram-api-user:v1
             
             docker build -t udagram-frontend ./udagram-frontend
-            docker tag udagram-frontend longtm4/udagram-frontend:v1
+            docker tag udagram-frontend longtm4/udagram-frontend:v6
 
             docker build -t udagram-reverseproxy ./udagram-reverseproxy
             docker tag udagram-reverseproxy longtm4/udagram-reverseproxy:v1
@@ -43,7 +43,7 @@ jobs:
             echo "PUSH ALL IMAGES TO DOCKER HUB"
             docker push longtm4/udagram-api-feed:v1
             docker push longtm4/udagram-api-user:v1
-            docker push longtm4/udagram-frontend:v1
+            docker push longtm4/udagram-frontend:v6
             docker push longtm4/udagram-reverseproxy:v1
 
 workflows:
