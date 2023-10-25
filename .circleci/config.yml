@@ -7,7 +7,7 @@ version: 2.1
 jobs:
   lint-app:
     docker:
-      - image: circleci/node:16
+      - image: circleci/node:14
     steps:
       - checkout
   build-docker:
@@ -18,11 +18,11 @@ jobs:
           name: Build docker container for each microservices
           command: |
             echo "--------- Installing dependencies-----------"
-            curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+            curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
             sudo apt-get install -y nodejs
             node -v
             npm -v
-            npm cache clean --force
+            npm install --save --legacy-peer-deps
 
             echo "BUILD ALL IMAGES"
             docker build -t udagram-api-feed ./udagram-api-feed
