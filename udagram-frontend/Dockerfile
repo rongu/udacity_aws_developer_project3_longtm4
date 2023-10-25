@@ -9,6 +9,7 @@ RUN npm install -f
 ##RUN npm ci
 ## Bundle app source
 COPY . .
+RUN npm install -g ionic
 RUN ionic build
 ### Run 
 FROM nginx:alpine
