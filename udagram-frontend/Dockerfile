@@ -5,7 +5,8 @@ WORKDIR /usr/src/app
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
-RUN npm ci
+npm config set legacy-peer-deps true
+RUN npm ci -f
 RUN npm install -g @ionic/cli
 # Bundle app source
 COPY . .
